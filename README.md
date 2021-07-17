@@ -1,5 +1,3 @@
-# cs5010-project05-image-model-application
-
 # Project 5 -- Image Model Application
 ## About/Overview.
 ##### Version 1
