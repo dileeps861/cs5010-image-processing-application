@@ -1,0 +1,51 @@
+load salad.jpg
+mosaic 1650
+save salad-mosaic-1650.jpg
+load salad.jpg
+dither 2
+save salad-dither-2.jpg
+load salad.jpg
+blur
+save salad-blur-file-1.jpg
+load salad.jpg
+sharpen
+save salad-sharpen-file-1.jpg
+load salad.jpg
+sepia-tone
+save salad-sepia-tone-file-1.jpg
+load salad.jpg
+grayscale
+save salad-grayscale-file-1.jpg
+load salad.jpg
+pixelate 50
+pattern
+save salad-pattern-50-file-1.txt
+load salad.jpg
+pixelate 50
+save salad-pixelate-50-file-1.jpg
+
+load flower.jpeg
+mosaic 1650
+save flower-mosaic-1650-file-1.jpeg
+load flower.jpeg
+dither 2
+save flower-dither-2-file-1.jpeg
+load flower.jpeg
+blur
+save flower-blur-file-1.jpeg
+load flower.jpeg
+sharpen
+save flower-sharpen-file-1.jpeg
+load flower.jpeg
+sepia-tone
+save flower-sepia-tone-file-1.jpeg
+load flower.jpeg
+grayscale
+save flower-grayscale-file-1.jpeg
+load flower.jpeg
+pixelate 50
+pattern
+save flower-pattern-50-file-1.txt
+load flower.jpeg
+pixelate 50
+save flower-pixelate-50-file-1.jpeg

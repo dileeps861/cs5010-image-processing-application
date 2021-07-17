@@ -1,0 +1,26 @@
+load salad.jpg
+mosaic 570
+save salad-mosaic-570-file-2.jpg
+load salad.jpg
+pixelate 30
+pattern
+save salad-pattern-30-file-2.txt
+load salad.jpg
+pixelate 30
+save salad-pixelate-30-file-2.jpg
+load salad.jpg
+pattern
+save salad-pattern-without-pixelate-file-2.txt
+load flower.jpeg
+mosaic 570
+save flower-mosaic-570-file-2.jpeg
+load flower.jpeg
+pixelate 30
+pattern
+save flower-pattern-30-file-2.txt
+load flower.jpeg
+pattern
+save flower-pattern-without-pixelate-file-2.txt
+load flower.jpeg
+pixelate 30
+save flower-pixelate-30-file-2.jpeg
