@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Q1 {
-    public int[][] kClosest(int[][] points, int k) {
-        int[][] result = new int[k][2];
+    public static List<List<Integer>> kClosest(List<List<Integer>> allLocations, int numDeliveries) {
+        List<List<Integer>> result = new ArrayList<>();
         List<Point> pointsList = new ArrayList<Point>();
-        for (int[] point : points) {
-            double distance = Math.sqrt((point[0] * point[0]) + (point[1] * point[1]));
-            pointsList.add(new Point(point[0], point[1], distance));
+        for (List<Integer> point : allLocations) {
+            double distance = Math.sqrt((point.get(0) * point.get(0)) + (point.get(1) * point.get(1)));
+            pointsList.add(new Point(point.get(0), point.get(1), distance));
         }
         Collections.sort(pointsList, (p1, p2) -> {
             if (p1.distance == p2.distance) {
@@ -21,13 +21,13 @@ public class Q1 {
             } else
                 return Double.compare(p1.distance, p2.distance);
         });
-        for (int i = 0; i < k; i++) {
-            result[i] = new int[]{pointsList.get(i).x, pointsList.get(i).y};
+        for (int i = 0; i < numDeliveries; i++) {
+            result.add( new ArrayList<>(Arrays.asList(pointsList.get(i).x, pointsList.get(i).y)));
         }
         return result;
     }
 
-    class Point {
+    static class Point {
         int x;
         int y;
         double distance;
