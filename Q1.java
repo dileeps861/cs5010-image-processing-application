@@ -1,48 +1,61 @@
 package audible;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class Q1 {
-    public int[][] kClosest(int[][] points, int k) {
-        int[][] result = new int[k][2];
-        List<Point> pointsList = new ArrayList<Point>();
-        for (int[] point : points) {
-            double distance = Math.sqrt((point[0] * point[0]) + (point[1] * point[1]));
-            pointsList.add(new Point(point[0], point[1], distance));
-        }
-        Collections.sort(pointsList, (p1, p2) -> {
-            if (p1.distance == p2.distance) {
-                return p1.x - p2.x;
-                // if question is looking for nearest point with x value, regardless of whether x value is positive or negative
-                // then return Math.abs(p1.x) - Math.abs(p2.x);
-            } else
-                return Double.compare(p1.distance, p2.distance);
-        });
-        for (int i = 0; i < k; i++) {
-            result[i] = new int[]{pointsList.get(i).x, pointsList.get(i).y};
+public class Q2 {
+    public static List<String> getItems(List<List<String>> entries)
+    {
+        List<String> result = new ArrayList<>();
+
+        PriorityQueue<Item> sortedItems = new PriorityQueue<>();
+        int times = 0;
+        for (List<String> entry : entries){
+            if(entry.get(0).equals("INSERT")){
+                sortedItems.add(new Item(entry.get(1), Integer.parseInt(entry.get(2))));
+            }
+            else {
+                Iterator<Item> itemIterator = sortedItems.iterator();
+                int count = 0;
+                Item visitedItem = null;
+                while (count <= times){
+                    visitedItem = itemIterator.next();
+                    count++;
+                }
+                result.add(visitedItem.itemName);
+                times++;
+            }
         }
         return result;
     }
 
-    class Point {
-        int x;
-        int y;
-        double distance;
+    private static class Item implements Comparable<Item>{
+        String itemName;
+        int price;
 
-        Point(int x, int y, double distance) {
-            this.x = x;
-            this.y = y;
-            this.distance = distance;
+        public Item(String itemName, int price) {
+            this.itemName = itemName;
+            this.price = price;
+        }
+
+        @Override
+        public int compareTo(Item o) {
+            if(this.price == o.price){
+                return this.itemName.compareTo(o.itemName);
+            }
+            return Integer.compare(this.price, o.price);
         }
     }
-
     public static void main(String[] args) {
-        int[][]points = { {1,2} , {3,4} , {1,-1}};
-        int k = 2;
-        int[][] result = new Q1().kClosest(points, k);
-        System.out.println(Arrays.deepToString(result));
+        List<List<String>> entries = new ArrayList<>();
+        entries.add(Arrays.asList("INSERT", "ruler", "4"));
+        entries.add(Arrays.asList("VIEW", "-", "-"));
+        entries.add(Arrays.asList("INSERT", "notecards", "2"));
+        entries.add(Arrays.asList("VIEW", "-", "-"));
+        entries.add(Arrays.asList("INSERT", "notebook", "9"));
+        entries.add(Arrays.asList("INSERT", "backpack", "10"));
+        entries.add(Arrays.asList("INSERT", "pens", "6"));
+        entries.add(Arrays.asList("INSERT", "pencils", "5"));
+        entries.add(Arrays.asList("VIEW", "-", "-"));
+        System.out.println(getItems(entries));
     }
 }
